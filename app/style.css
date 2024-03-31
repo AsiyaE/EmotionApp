@@ -1,0 +1,98 @@
+*{
+box-sizing: border-box;
+}
+
+@font-face { 
+    font-family: 'Lato';
+    font-display: swap;
+    font-style: normal;
+    font-weight: 100;
+    src: local('Lato'), url('assets/lato-light.woff2')
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px; 
+    font-variant: small-caps; 
+    margin: 0;
+    background-color: #1d3341;
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100vw; 
+    height: 100vh;  
+}
+
+header{
+    position: absolute;
+    top:0;
+    left:0;
+    height:60px;
+    width:100%;
+    padding: 10px;
+    display:flex;
+    align-items: center;
+    background-color: #3e7394;
+    color:white;
+}
+
+.video { display: none; }
+
+.canvas { margin: 80px auto 20px; }
+
+.log {
+    position: absolute;
+    bottom: 0;
+    margin: 0.4rem 0.4rem 0 0.4rem;
+    font-size: 0.9rem; 
+}
+
+.status {
+    position: absolute; 
+    width: 100vw; bottom: 10%;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 100;
+    text-shadow: 2px 2px #303030;
+}
+
+.camera{
+    position:relative;
+}
+
+.container{
+    position: absolute;
+    left:0;
+    top:0;
+}
+
+.result-container{
+    width:260px;
+    min-height: 200px;
+    padding: 16px;
+    margin-top:20px;
+    border-radius: 20px;
+    font-weight: 600;
+    background-color: rgb(151, 214, 230);
+    color: black;
+}
+
+.warning{
+    height:40px;
+    color: #c0c01d;
+}
+
+.descript{
+    display: flex;
+    flex-direction: column;
+    font-weight: 400;
+    p{
+        margin: 2px;
+    }
+}
+
+.emotion{
+    font-weight: bold;
+}

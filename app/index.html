@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Human</title>
+    <meta name="viewport" content="width=device-width" id="viewport">
+    <meta name="keywords" content="Human">
+    <meta name="application-name" content="Human">
+    <meta name="description" content="Human: 3D Face Detection, Body Pose, Hand & Finger Tracking, Iris Tracking, Age & Gender Prediction, Emotion Prediction & Gesture Recognition; Author: Vladimir Mandic <https://github.com/vladmandic>">
+    <meta name="msapplication-tooltip" content="Human: 3D Face Detection, Body Pose, Hand & Finger Tracking, Iris Tracking, Age & Gender Prediction, Emotion Prediction & Gesture Recognition; Author: Vladimir Mandic <https://github.com/vladmandic>">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="../manifest.webmanifest">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="assets/icon.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js" type="module"></script>
+  </head>
+  <body>
+    <header>
+      <span>Распознавание эмоций</span>
+    </header>
+    <div id="status" class="status"></div>
+    <canvas id="canvas" class="canvas"></canvas>
+    <video id="video" playsinline class="video"></video>
+    <div id="log" class="log"></div>
+    <div class="result-container">
+      <div id="emotion" class="emotion">Эмоции:</div>
+       <div id="descript" class="descript">
+         <p>грусть:<span id="sad"></span></p>
+         <p>радость:<span id="happy"></span></p>
+         <p>страх:<span id="fear"></span></p>
+         <p>злость:<span id="angry"></span></p>
+         <p>нейтрально:<span id="neutral"></span></p>
+         <p>отвращение:<span id="disgusted"></span></p>
+         <p>удивление:<span id="surprised"></span></p>
+       </div>
+   </div>
+   <pre id="log" style="padding: 8px; position: fixed; bottom: 0"></pre>
+  </body>
+</html>
