@@ -1,5 +1,3 @@
-<reference lib="webworker" />
-
 self.importScripts('https://cdn.jsdelivr.net/npm/@vladmandic/human/dist/human.js'); 
 
 let human;

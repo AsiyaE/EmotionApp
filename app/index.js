@@ -20,7 +20,7 @@ const config = {
   },
   face: { // runs all face models
     warmup: 'none',
-    backend: 'webgpu',
+    backend: 'wasm',
     modelBasePath: 'models',
     async: false,
     filter: { enabled: false },
@@ -186,6 +186,8 @@ async function startWorkers() {
 }
 
 async function main() {
+  const adapter = await navigator.gpu.requestAdapter();
+  console.log('navigator.gpu = ',adapter);
   if (typeof Worker === 'undefined' || typeof OffscreenCanvas === 'undefined') {
     return;
   }
