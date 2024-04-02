@@ -6,9 +6,9 @@ const app = express();
 const __dirname = path.resolve();
 
 app.use(cors());
-app.use(express.static(path.join(__dirname,'app')));
+app.use(express.static(path.join(__dirname,'src')));
 
-const PORT =4000;
+const PORT = 4000;
 
 app.get('/', (req, res) =>{
 	res.sendFile(`index.html`);
