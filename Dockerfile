@@ -1,15 +1,15 @@
-FROM node:21
+FROM node:16
 
-RUN mkdir -p /src/app
+WORKDIR /src/app
 
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
+COPY package.json .
 
 COPY . .
 
-EXPOSE 4000
+RUN npm install
 
-CMD ["npm", "start"]
+COPY node_modules/@vladmandic/human/dist ./human-dist
+
+ENTRYPOINT node app.js
+
+USER node

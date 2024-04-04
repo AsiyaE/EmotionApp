@@ -4,14 +4,15 @@ import path from 'path';
 
 const app = express();
 const __dirname = path.resolve();
+const mainPath = path.join(__dirname,'src')
 
 app.use(cors());
-app.use(express.static(path.join(__dirname,'src')));
+app.use(express.static(mainPath));
 
 const PORT = 4000;
 
 app.get('/', (req, res) =>{
-	res.sendFile(`index.html`);
+	res.sendFile(mainPath +`index.html`);
 });
 
 app.listen(PORT, ()=>{

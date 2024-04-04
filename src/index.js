@@ -96,7 +96,6 @@ async function WriteEmotions(){
 
   const emotionArr = interpolated.face[0] ? (interpolated.face[0].emotion) : [];
  for (let i = 0; i < emotionArr.length; i++){
-    console.log(document.querySelector(`#${emotionArr[i].emotion}`));
     document.querySelector(`#${emotionArr[i].emotion}`).textContent = `${(emotionArr[i].score*100).toFixed(0)}% `;
   }
 }
