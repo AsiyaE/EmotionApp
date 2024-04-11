@@ -37,6 +37,8 @@ let human;
 let canvas;
 let video;
 let bench;
+let startDetection, endDetection;
+let flagS=1, flagE=1;
 
 const busy = {
   face: false,
@@ -83,7 +85,7 @@ async function drawResults() {
   const fps = Math.round(10 * 1000 / time.main) / 10;
   const draw = Math.round(10 * 1000 / time.draw) / 10;
   const div = document.querySelector('#log');
-  if (div) div.innerText = `Human: version ${human.version} | Performance: Main ${time.main}ms Face: ${time.face}ms Body: ${time.body}ms Hand: ${time.hand}ms Object ${time.object}ms | FPS: ${fps} / ${draw}`;
+  if (div) div.innerText = `Human: version ${human.version} | Performance: Main ${time.main}ms Face: ${time.face}ms | FPS: ${fps} / ${draw}`;
   requestAnimationFrame(drawResults);
 }
 
@@ -103,11 +105,18 @@ async function WriteEmotions(){
 
 async function receiveMessage(msg) {
   result[msg.data.type] = msg.data.result;
+  const face = msg.data.result;
   busy[msg.data.type] = false;
   time[msg.data.type] = Math.round(human.now() - start[msg.data.type]);
+  if (flagE && face[0] && (face[0].emotion)) {
+    endDetection = performance.now();
+    flagE = 0;
+    console.log('Result perfomance between start and end = ', endDetection-startDetection);
+  }
 }
 
 async function runDetection() {
+
   start.main = human.now();
   if (!bench) {
     bench = new GLBench(null, { trackGPU: false, chartHz: 20, chartLen: 20 });
@@ -117,6 +126,12 @@ async function runDetection() {
   const ctx = canvas.getContext('2d');
   ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
   const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  
+  if (flagS) {
+    startDetection = performance.now();
+    console.log('Cтарт', startDetection )
+    flagS = 0;
+  }
 
   if (!busy.face) {
     busy.face = true;
