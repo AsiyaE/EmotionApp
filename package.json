@@ -5,11 +5,12 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js"
+    "start": "node src/app.js"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "@vladmandic/human": "^3.2.1",
     "cors": "^2.8.5",
     "express": "^4.19.2"
   }

@@ -9,10 +9,10 @@ const mainPath = path.join(__dirname,'src')
 app.use(cors());
 app.use(express.static(mainPath));
 
-const PORT = 4000;
+const PORT = 3000;
 
 app.get('/', (req, res) =>{
-	res.sendFile(mainPath +`index.html`);
+	res.sendFile(__dirname + `/index.html`);
 });
 
 app.listen(PORT, ()=>{

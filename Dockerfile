@@ -1,15 +1,11 @@
 FROM node:16
 
-WORKDIR /src/app
-
-COPY package.json .
+WORKDIR /app
 
 COPY . .
 
 RUN npm install
 
-COPY node_modules/@vladmandic/human/dist ./human-dist
+CMD ["node", "src/app.js"]
 
-ENTRYPOINT node app.js
-
-USER node
+EXPOSE 3000

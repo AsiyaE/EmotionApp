@@ -97,7 +97,8 @@ async function WriteEmotions(){
     spanNode.forEach((elem)=>elem.textContent='');
 
   const emotionArr = interpolated.face[0] ? (interpolated.face[0].emotion) : [];
- for (let i = 0; i < emotionArr.length; i++){
+  const len = emotionArr.length
+  for (let i = 0; i < len; i++){
     document.querySelector(`#${emotionArr[i].emotion}`).textContent = `${(emotionArr[i].score*100).toFixed(0)}% `;
   }
 }
@@ -105,9 +106,10 @@ async function WriteEmotions(){
 
 async function receiveMessage(msg) {
   result[msg.data.type] = msg.data.result;
-  const face = msg.data.result;
   busy[msg.data.type] = false;
   time[msg.data.type] = Math.round(human.now() - start[msg.data.type]);
+
+  const face = msg.data.result;
   if (flagE && face[0] && (face[0].emotion)) {
     endDetection = performance.now();
     flagE = 0;
@@ -129,14 +131,15 @@ async function runDetection() {
   
   if (flagS) {
     startDetection = performance.now();
-    console.log('Cтарт', startDetection )
     flagS = 0;
   }
 
   if (!busy.face) {
     busy.face = true;
     start.face = human.now();
-    if (workers.face) workers.face.postMessage({ image: imageData.data.buffer, width: canvas.width, height: canvas.height, config: config.face, type: 'face' }, [imageData.data.buffer.slice(0)]);
+    if (workers.face) workers.face.postMessage({ image: imageData.data.buffer, width: canvas.width, 
+                                                height: canvas.height, config: config.face, type: 'face' 
+    }, [imageData.data.buffer.slice(0)]);
   }
 
   time.main = Math.round(human.now() - start.main);
@@ -200,8 +203,8 @@ async function startWorkers() {
 }
 
 async function main() {
-  const adapter = await navigator.gpu.requestAdapter();
-  console.log('navigator.gpu = ',adapter);
+  // const adapter = await navigator.gpu.requestAdapter();
+  // console.log('navigator.gpu = ',adapter);
   if (typeof Worker === 'undefined' || typeof OffscreenCanvas === 'undefined') {
     return;
   }
